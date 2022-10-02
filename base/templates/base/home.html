@@ -12,17 +12,17 @@
 
 <div class="home-container">
         <div>
-            <h3>Browse Topics</h3>
-            <hr>
+            <h2>Browse Topics</h2>
+            
 
             <div>
-                <a href="{% url 'home' %}">All</a>
+                <h4><a href="{% url 'home' %}">All</a></h4>
             </div>
         
             {% for topic in topics %}
 
             <div>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+            <h4><a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a></h4>
             </div>
 
             {% endfor %}
@@ -31,23 +31,24 @@
         </div>
         
         <div>
-            <h4>{{room_count}} room(s) available</h4>
+            <h2>Study Rooms</h2>
+            
             <h3><a href="{% url 'create-room' %}">Create</a></h3>
+            <h4>{{room_count}} Room(s) available</h4>
             <hr>
             
             <div>
                 {% for room in rooms %}
                     <div>
         
-                        <h4>@{{room.host.username}}</h4>
+                        <p>@{{room.host.username}}</p>
                         
-                        <h1><a href = "{% url 'room' room.id %}">{{room.name}}</a></h1>
+                        <h2><a href = "{% url 'room' room.id %}">{{room.name}}</a></h2>
                         <h3>{{room.topic.name}}</h3>
                         {% if request.user == room.host %}
-                        <p>
-                            <a href="{% url 'update-room' room.id %}">Edit</a>
-                            <a href="{% url 'delete-room' room.id %}">Delete</a>
-                        </p>
+                        
+                            <h4><a href="{% url 'update-room' room.id %}">Edit</a> &nbsp; <a href="{% url 'delete-room' room.id %}">Delete</a> </h4>
+                        
                         {% endif %}
                     </div>
                     <hr>
